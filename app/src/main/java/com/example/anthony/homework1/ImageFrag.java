@@ -78,24 +78,14 @@ public class ImageFrag extends Fragment {
 
             @Override
             public void onClick(View view) {
-
                 String answer = editText.getText().toString().trim();
                 editText.setText("");
 
-
-               // if (answer.equals("cow")) {
                     getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.main_fragment_container, TextFrag.newInstance(null, null, null, answer))
                             .commit();
-               /*} else {
-                    getFragmentManager()
-                            .beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.main_fragment_container, TextFrag.newInstance(null, null, null, null))
-                            .commit();
-                }*/
             }
         });
     }

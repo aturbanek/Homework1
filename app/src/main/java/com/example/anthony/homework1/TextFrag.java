@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.DialogPreference;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +39,7 @@ public class TextFrag extends Fragment {
 
     private String[] q1 = {"What is the class number for this course?", "302", "407", "536"};
     private String[] q2 = {"What days do we have class?","M T W", "W TH F", "M W F"};
-    private String[] q3 = {"What building is by the computer science building?", "Union south",
+    private String[] q3 = {"What building is by the computer science building?", "Union South",
     "Memorial Union", "none of the above"};
 
     private String option1;
@@ -50,9 +49,6 @@ public class TextFrag extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     public TextFrag() {
@@ -113,17 +109,16 @@ public class TextFrag extends Fragment {
             q.setText(q2[0]);
             b1.setText(q2[1]);
             b2.setText(q2[2]);
-            b3.setText(q2[2]);
+            b3.setText(q2[3]);
 
         }
         else
         {
             q.setText(q3[0]);
-            b1.setText(q2[1]);
-            b2.setText(q2[2]);
-            b3.setText(q2[3]);
+            b1.setText(q3[1]);
+            b2.setText(q3[2]);
+            b3.setText(q3[3]);
         }
-
         return view;
 
     }
@@ -146,14 +141,13 @@ public class TextFrag extends Fragment {
                     getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.main_fragment_container, TextFrag.newInstance(q2[1], null, null, option4))
+                            .replace(R.id.main_fragment_container, TextFrag.newInstance(option1, q2[1], null, option4))
                             .commit();
 
                 } else {
                     option3 = q3[1];
                     score();
                 }
-
             }
 
         });
@@ -173,7 +167,7 @@ public class TextFrag extends Fragment {
                     getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.main_fragment_container, TextFrag.newInstance(q2[2], null, null, option4))
+                            .replace(R.id.main_fragment_container, TextFrag.newInstance(option1, q2[2], null, option4))
                             .commit();
 
                 } else
@@ -181,7 +175,6 @@ public class TextFrag extends Fragment {
                     option3 = q3[2];
                     score();
                 }
-
             }
 
         });
@@ -200,7 +193,7 @@ public class TextFrag extends Fragment {
                     getFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.main_fragment_container, TextFrag.newInstance(q2[3], null, null, option4))
+                            .replace(R.id.main_fragment_container, TextFrag.newInstance(option1, q2[3], null, option4))
                             .commit();
 
                 } else
@@ -208,7 +201,6 @@ public class TextFrag extends Fragment {
                     option3 = q3[3];
                     score();
                 }
-
             }
 
         });
@@ -228,12 +220,12 @@ public class TextFrag extends Fragment {
         {
             score++;
         }
-        if(option4.equals("correct"))
+        if(option4.equals("cow"))
         {
             score++;
         }
 
-        String output = "You answerd "+ " questions correct";
+        String output = "You answerd "+ score+ " questions correct";
         displayScore(output);
     }
 
